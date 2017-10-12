@@ -82,5 +82,10 @@ namespace CommonErrorsKata
         {
             Application.Exit();
         }
+
+        private void CommonErrorsForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -40,16 +40,16 @@
             // 
             this.pbImage.Location = new System.Drawing.Point(12, 45);
             this.pbImage.Name = "pbImage";
-            this.pbImage.Size = new System.Drawing.Size(1117, 690);
+            this.pbImage.Size = new System.Drawing.Size(712, 537);
             this.pbImage.TabIndex = 0;
             this.pbImage.TabStop = false;
             // 
             // lstAnswers
             // 
             this.lstAnswers.FormattingEnabled = true;
-            this.lstAnswers.Location = new System.Drawing.Point(1136, 45);
+            this.lstAnswers.Location = new System.Drawing.Point(730, 45);
             this.lstAnswers.Name = "lstAnswers";
-            this.lstAnswers.Size = new System.Drawing.Size(120, 654);
+            this.lstAnswers.Size = new System.Drawing.Size(120, 537);
             this.lstAnswers.TabIndex = 1;
             // 
             // progress
@@ -70,7 +70,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(1136, 706);
+            this.btnCancel.Location = new System.Drawing.Point(730, 553);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(120, 29);
             this.btnCancel.TabIndex = 4;
@@ -82,7 +82,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1258, 747);
+            this.ClientSize = new System.Drawing.Size(883, 606);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progress);
@@ -90,6 +90,7 @@
             this.Controls.Add(this.pbImage);
             this.Name = "CommonErrorsForm";
             this.Text = "Common Errors Kata";
+            this.Load += new System.EventHandler(this.CommonErrorsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
