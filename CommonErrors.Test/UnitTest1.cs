@@ -9,7 +9,7 @@ using CommonErrorsKata.Shared;
 namespace CommonErrors.Test
 {
     [TestFixture]
-    public class UnitTest1
+    public class AnswerQueueTestFixture
     {
         [Test]
         public void ShouldOnlyAllowTenAnswers()
@@ -19,7 +19,7 @@ namespace CommonErrors.Test
             var stack = new AnswerQueue<TrueFalseAnswer>(size);
 
             //Act
-            for (int i = 0; i < size+1; i++)
+            for (int i = 0; i < size + 1; i++)
                 stack.Enqueue(new TrueFalseAnswer(true));
 
             //Assert
@@ -33,12 +33,12 @@ namespace CommonErrors.Test
             var size = 10;
             var stack = new AnswerQueue<TrueFalseAnswer>(size);
             stack.Enqueue(new TrueFalseAnswer(false));
-            for (var i =0; i< 10; i++)
+            for (var i = 0; i < 10; i++)
                 stack.Enqueue(new TrueFalseAnswer(true));
-            
+
             //Act
             var grade = stack.Grade;
-            
+
             //Assert
             Assert.AreEqual(100, grade);
         }
@@ -59,6 +59,26 @@ namespace CommonErrors.Test
 
             //Assert
             Assert.AreEqual(50, grade);
+        }
+
+        [TestFixture]
+        public class CommonAnswerTestFixture
+        {
+            [Test]
+            public void ShouldOnlyAllowBetweenZeroAndOneHundred()
+            {
+                var answer = new CommonAnswer();
+
+                Assert.Throws<InvalidGradeException>(() =>
+                {
+                    answer.Grade = -1;
+                });
+
+                Assert.Throws<InvalidGradeException>(() =>
+                {
+                    answer.Grade = 101;
+                });
+            }
         }
     }
 }

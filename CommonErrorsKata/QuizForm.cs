@@ -10,22 +10,27 @@ namespace CommonErrorsKata
 {
     public partial class CommonErrorsForm : Form
     {
+        private const int MinRightAnswers = 15;
+
         private readonly AnswerQueue<TrueFalseAnswer> answerQueue;
         private readonly string[] files;
         private readonly SynchronizationContext synchronizationContext;
-        private int i = 100;
-        private string currentBaseName = null;
-        private readonly string[] possibleAnswers = null;
+        private int currentProgressPercent = 100;
+        private string currentImageFileName = null;
+        private readonly string[] fileNames;
 
         public CommonErrorsForm()
         {
             InitializeComponent();
             synchronizationContext = SynchronizationContext.Current;
-            files = System.IO.Directory.GetFiles(Environment.CurrentDirectory +  @"..\..\..\ErrorPics");
-            possibleAnswers = new string[] { "Missing File", "null instance", "divide by zero" };
-            lstAnswers.DataSource = possibleAnswers;
-            answerQueue = new AnswerQueue<TrueFalseAnswer>(15);
-            Next();
+            files = Directory.GetFiles(Environment.CurrentDirectory + @"..\..\..\ErrorPics");
+
+
+            fileNames = files.Select(file => Path.GetFileName(file)).ToArray();
+
+            lstAnswers.DataSource = fileNames.Select(element => element.Replace(".png", "")).ToList();
+            answerQueue = new AnswerQueue<TrueFalseAnswer>(MinRightAnswers);
+            AskNextQuestion();
             lstAnswers.Click += LstAnswers_Click;
             StartTimer();
         }
@@ -33,9 +38,9 @@ namespace CommonErrorsKata
         {
             await Task.Run(() =>
             {
-                for (i = 100; i > 0; i--)
+                for (currentProgressPercent = 100; currentProgressPercent > 0; currentProgressPercent--)
                 {
-                    UpdateProgress(i);
+                    UpdateProgress(currentProgressPercent);
                     Thread.Sleep(50);
                 }
                 Message("Need to be quicker on your feet next time!  Try again...");
@@ -44,24 +49,25 @@ namespace CommonErrorsKata
 
         private void LstAnswers_Click(object sender, EventArgs e)
         {
-            i = 100;
-            var tokens = currentBaseName.Split(' ');
-            //TODO:  Figure out what is a valid answer.
-            answerQueue.Enqueue(new TrueFalseAnswer(true));
-            Next();
+            currentProgressPercent = 100;
+
+            var isCorrectAnswer = currentImageFileName.Replace(".png", "") == lstAnswers.SelectedItem.ToString();
+            answerQueue.Enqueue(new TrueFalseAnswer(isCorrectAnswer));
+
+            AskNextQuestion();
         }
 
-        private void Next()
+        private void AskNextQuestion()
         {
-            if (answerQueue.Count == 15 && answerQueue.Grade >= 98)
+            if (answerQueue.Count >= MinRightAnswers && answerQueue.Grade >= 98)
             {
                 MessageBox.Show("Congratulations you've defeated me!");
                 Application.Exit();
                 return;
             }
-            label1.Text = answerQueue.Grade.ToString() + "%";
+            label1.Text = answerQueue.Grade + "%";
             var file = files.GetRandom();
-            currentBaseName= Path.GetFileName(file);
+            currentImageFileName = Path.GetFileName(file);
             pbImage.ImageLocation = file;
         }
 

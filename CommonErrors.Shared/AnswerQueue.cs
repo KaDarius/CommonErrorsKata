@@ -8,7 +8,7 @@ namespace CommonErrorsKata.Shared
     {
         private readonly int size;
 
-        public decimal Grade { get{ return this.Count() == 0 ? 0 :  this.Average(x => x.Grade); } }
+        public decimal Grade { get { return this.Count() == 0 ? 0 : this.Average(x => x.Grade); } }
 
         /// <summary>
         /// Stack that cannot exceed it's size
@@ -30,7 +30,7 @@ namespace CommonErrorsKata.Shared
             base.Enqueue(item);
         }
 
-        
-        
+
+
     }
 }

@@ -38,41 +38,47 @@
             // 
             // pbImage
             // 
-            this.pbImage.Location = new System.Drawing.Point(12, 45);
+            this.pbImage.Location = new System.Drawing.Point(24, 113);
+            this.pbImage.Margin = new System.Windows.Forms.Padding(6);
             this.pbImage.Name = "pbImage";
-            this.pbImage.Size = new System.Drawing.Size(712, 537);
+            this.pbImage.Size = new System.Drawing.Size(1016, 734);
             this.pbImage.TabIndex = 0;
             this.pbImage.TabStop = false;
             // 
             // lstAnswers
             // 
             this.lstAnswers.FormattingEnabled = true;
-            this.lstAnswers.Location = new System.Drawing.Point(730, 45);
+            this.lstAnswers.ItemHeight = 25;
+            this.lstAnswers.Location = new System.Drawing.Point(1075, 150);
+            this.lstAnswers.Margin = new System.Windows.Forms.Padding(6);
             this.lstAnswers.Name = "lstAnswers";
-            this.lstAnswers.Size = new System.Drawing.Size(120, 537);
+            this.lstAnswers.Size = new System.Drawing.Size(236, 629);
             this.lstAnswers.TabIndex = 1;
             // 
             // progress
             // 
-            this.progress.Location = new System.Drawing.Point(12, 16);
+            this.progress.Location = new System.Drawing.Point(24, 31);
+            this.progress.Margin = new System.Windows.Forms.Padding(6);
             this.progress.Name = "progress";
-            this.progress.Size = new System.Drawing.Size(1117, 23);
+            this.progress.Size = new System.Drawing.Size(2234, 44);
             this.progress.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1180, 26);
+            this.label1.Location = new System.Drawing.Point(1147, 113);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(27, 13);
+            this.label1.Size = new System.Drawing.Size(55, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "98%";
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(730, 553);
+            this.btnCancel.Location = new System.Drawing.Point(1071, 791);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(6);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(120, 29);
+            this.btnCancel.Size = new System.Drawing.Size(240, 56);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Exit";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -80,14 +86,15 @@
             // 
             // CommonErrorsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(883, 606);
+            this.ClientSize = new System.Drawing.Size(1955, 1246);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progress);
             this.Controls.Add(this.lstAnswers);
             this.Controls.Add(this.pbImage);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "CommonErrorsForm";
             this.Text = "Common Errors Kata";
             this.Load += new System.EventHandler(this.CommonErrorsForm_Load);
@@ -106,4 +113,3 @@
         private System.Windows.Forms.Button btnCancel;
     }
 }
-
